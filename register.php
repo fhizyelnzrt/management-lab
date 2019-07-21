@@ -1,23 +1,53 @@
 <?php 
 require_once 'core/init.php';
 
-/**
- * pengecekan apakah ada submit atau tidak
- * jika ada makana akan menjalankan syntax ini 
- * yang berfungsi untuk mendaftarkan user baru untuk diinputkan ke database
- */
+//object untuk menambung error agar bisa dikeluarkan
+$errors = array();
+
 if ( Input::get('submit') ){
-  $user->reqister_user(array(
-    'username' => Input::get('username'),
-    'email' => Input::get('email'),
-    'password' => password_hash(Input::get('password'), PASSWORD_DEFAULT)
+
+  $validation = new Validation(); //memanggil object validasi
+  /**
+   * Objeck untuk mengecek validasi username, email, password
+   * dan kebutuhan yang harus diisikan dalam form
+   */
+  $validation = $validation->check(array(
+    'username' => array(
+                    'required' => true,
+                    'min'      => 3,
+                    'max'      => 50,
+                  ),
+    'email'    => array(
+                    'required' => true,
+                    'min'      => 10,
+                  ),
+    'password' => array(
+                    'required' => true,
+                    'min'      => 4,
+                  ),
   ));
-  
+
+  /**
+   * pengecekan apakah ada submit atau tidak
+   * jika ada makana akan menjalankan syntax ini 
+   * yang berfungsi untuk mendaftarkan user baru untuk diinputkan ke database
+   * jika tidak sesuai dengan validasi di atas makan akan diinformasikan errornya
+   */
+  if ( $validation->passed() ){
+    $user->reqister_user(array(
+      'username' => Input::get('username'),
+      'email' => Input::get('email'),
+      'password' => password_hash(Input::get('password'), PASSWORD_DEFAULT)
+    ));
+  } else {
+    $errors = $validation->errors();
+  }
   //var_dump(Input::get('username'));
   //die();
   // echo "masuk";
 }
-?>
+
+  ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -54,6 +84,14 @@ if ( Input::get('submit') ){
                 <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
               </div>
               <form class="user" method="POST" action="register.php">
+                <?php if( !empty($errors) ) {?>
+                  <div class="alert alert-danger" role="alert">
+                    <?php 
+                    foreach ($errors as $error) { ?>
+                      <li> <?= $error ?></li>
+                    <?php } ?>
+                  </div>
+                <?php } ?>
                 <div class="form-group row">
                   <div class="col-sm-6 mb-3 mb-sm-0">
                     <input type="text" name="username" class="form-control form-control-user" placeholder="Username">
@@ -71,7 +109,6 @@ if ( Input::get('submit') ){
                   </div>
                 </div>
                 <input type="submit" name="submit" class="btn btn-primary btn-user btn-block" value="submit">
-                <button name="kirim" class="btn btn-primary btn-user btn-block">Register</button>
               </form>
               <div class="text-center">
                 <a class="small" href="login.php">Already have an account? Login!</a>
