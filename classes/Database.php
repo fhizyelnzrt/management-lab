@@ -53,6 +53,7 @@ class Database {
       $i++;
     }
 
+
     //menggambungkan nilai array $valuesArrays yang tadi baru di ekstra
     //yang hanya saja menggail nilai Values array tersebut
     $values = implode(", ", $valueArrays);
@@ -64,6 +65,19 @@ class Database {
 
     //mengoper nilai ke method run_query
     return $this->run_query($query, 'Masalah Saat Memasukan Data');
+  }
+
+  public function get_info($table, $column, $value) {
+    if ( !is_int($value) )
+      $value = "'". $value ."'";
+
+    $query = "SELECT * FROM $table WHERE $column = $value";
+    $result = $this->mysqli->query($query);
+
+    while($row = $result->fetch_assoc() ){
+      return $row;
+    }
+
   }
 
   /**

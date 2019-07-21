@@ -1,11 +1,11 @@
 <?php 
-include 'template/header.php';
+  require_once 'template/header.php';
 ?>
 
   <!-- Page Wrapper -->
   <div id="wrapper">
 
-<?php include 'template/menu.php' ?>
+<?php require_once 'template/menu.php' ?>
 
     <!-- Content Wrapper -->
     <div id="content-wrapper" class="d-flex flex-column">
@@ -13,7 +13,7 @@ include 'template/header.php';
       <!-- Main Content -->
       <div id="content">
 
-        <?php include 'template/nav-atas.php' ?>
+        <?php require_once 'template/nav-atas.php' ?>
 
         <!-- Begin Page Content -->
         <div class="container-fluid">
@@ -175,5 +175,5 @@ include 'template/header.php';
   </div>
 
 <?php 
-include 'template/footer.php';
+require_once 'template/footer.php';
 ?>
