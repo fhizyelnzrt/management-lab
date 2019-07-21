@@ -2,6 +2,43 @@
 
 require_once 'core/init.php';
 
+
+//object untuk menambung error agar bisa dikeluarkan
+$errors = array();
+
+if ( Input::get('submit') ){
+
+  $validation = new Validation(); //memanggil object validasi
+  /**
+   * Objeck untuk mengecek validasi username, email, password
+   * dan kebutuhan yang harus diisikan dalam form
+   */
+  $validation = $validation->check(array(
+    'username' => array( 'required' => true ),
+    //'email'    => array( 'required' => true ),
+    'password' => array( 'required' => true )
+  ));
+
+  /**
+   * pengecekan apakah ada submit atau tidak
+   * jika ada makana akan menjalankan syntax ini 
+   * yang berfungsi untuk mendaftarkan user baru untuk diinputkan ke database
+   * jika tidak sesuai dengan validasi di atas makan akan diinformasikan errornya
+   */
+  if ( $validation->passed() ){
+    
+    if ( $user->login_user( Input::get('username'), Input::get('password') ) ) { 
+      Session::set('username', Input::get('username'));
+      header('Location: index.php');
+    } else {
+      $errors[] = 'login gagal';
+    }
+      
+  } else {
+    $errors = $validation->errors();
+  }
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -14,7 +51,7 @@ require_once 'core/init.php';
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>SB Admin 2 - Login</title>
+  <title>Management Lab - Login</title>
 
   <!-- Custom fonts for this template-->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -43,12 +80,20 @@ require_once 'core/init.php';
                   <div class="text-center">
                     <h1 class="h4 text-gray-900 mb-4">Masuk Duls cuyy!</h1>
                   </div>
-                  <form class="user">
+                  <form class="user" method="POST" action="login.php">
+                    <?php if( !empty($errors) ) {?>
+                      <div class="alert alert-danger" role="alert">
+                        <?php 
+                        foreach ($errors as $error) { ?>
+                          <li> <?= $error ?></li>
+                        <?php } ?>
+                      </div>
+                    <?php } ?>
                     <div class="form-group">
-                      <input type="email" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Email Address...">
+                      <input type="text" name="username" class="form-control form-control-user" placeholder="Enter username">
                     </div>
                     <div class="form-group">
-                      <input type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Password">
+                      <input type="password" name="password" class="form-control form-control-user" placeholder="Password">
                     </div>
                     <div class="form-group">
                       <div class="custom-control custom-checkbox small">
@@ -56,9 +101,7 @@ require_once 'core/init.php';
                         <label class="custom-control-label" for="customCheck">Remember Me</label>
                       </div>
                     </div>
-                    <a href="index.html" class="btn btn-primary btn-user btn-block">
-                      Login
-                    </a>
+                    <input type="submit" name="submit" class="btn btn-primary btn-user btn-block" value="Login"/>
                   </form>
                   <div class="text-center">
                     <a class="small" href="register.php">Create an Account!</a>

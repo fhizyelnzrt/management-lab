@@ -39,6 +39,10 @@ if ( Input::get('submit') ){
       'email' => Input::get('email'),
       'password' => password_hash(Input::get('password'), PASSWORD_DEFAULT)
     ));
+
+    Session::set('username', Input::get('username'));
+    header('Location: index.php');
+
   } else {
     $errors = $validation->errors();
   }
