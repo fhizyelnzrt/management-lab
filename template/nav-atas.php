@@ -1,9 +1,9 @@
 <?php 
-require_once 'core/init.php';
+  require_once 'core/init.php';
 
-if ( !Session::exists('username') ) {
-  header('Location: login.php');
-}
+  if ( !Session::exists('username') ) {
+    header('Location: login.php');
+  }
 
 ?>
 

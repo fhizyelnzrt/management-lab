@@ -2,6 +2,9 @@
 
 require_once 'core/init.php';
 
+  if ( Session::exists('username') ) {
+    header('Location: index.php');
+  }
 
 //object untuk menambung error agar bisa dikeluarkan
 $errors = array();
@@ -27,11 +30,15 @@ if ( Input::get('submit') ){
    */
   if ( $validation->passed() ){
     
-    if ( $user->login_user( Input::get('username'), Input::get('password') ) ) { 
-      Session::set('username', Input::get('username'));
-      header('Location: index.php');
+    if ( $user->cek_nama(Input::get('username')) ) {
+      if ( $user->login_user( Input::get('username'), Input::get('password') ) ) { 
+        Session::set('username', Input::get('username'));
+        header('Location: index.php');
+      } else {
+        $errors[] = 'login gagal';
+      }
     } else {
-      $errors[] = 'login gagal';
+      $errors[] = 'nama belum terdaftar';
     }
       
   } else {

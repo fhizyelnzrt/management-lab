@@ -1,6 +1,10 @@
 <?php 
 require_once 'core/init.php';
 
+  if ( Session::exists('username') ) {
+    header('Location: index.php');
+  }
+
 //object untuk menambung error agar bisa dikeluarkan
 $errors = array();
 
