@@ -44,7 +44,7 @@
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Pilih Menu:</h6>
             <a class="collapse-item" href="kelolabarang.php">Kelola Barang</a>
-            <a class="collapse-item" href="kelolaketegori.php">Kelola Kategori</a>
+            <a class="collapse-item" href="kelolakategori.php">Kelola Kategori</a>
           </div>
         </div>
       </li>
