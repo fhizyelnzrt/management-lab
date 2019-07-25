@@ -53,7 +53,6 @@ class Database {
       $i++;
     }
 
-
     //menggambungkan nilai array $valuesArrays yang tadi baru di ekstra
     //yang hanya saja menggail nilai Values array tersebut
     $values = implode(", ", $valueArrays);
@@ -81,7 +80,6 @@ class Database {
   }
 
   public function get_fields($table){
- 
     $query  = "SELECT * FROM $table";
     $result = $this->mysqli->query($query);
     //$hasil = $result->fetch_all();
@@ -89,8 +87,32 @@ class Database {
        $data[] = $row;
     }
     return $data;
-    
-    //return $result;
+  }
+
+  public function kirimKategori( $id ){
+    $query = "SELECT * FROM kategori WHERE id=$id";
+    $result = $this->mysqli->query($query);
+
+    while($row = $result->fetch_assoc() ){
+     $data[] = $row;
+    }
+
+    return $data;
+  }
+
+  public function updateKategori($nama, $keterangan, $id ){
+
+    $query = "UPDATE kategori SET nama = '$nama', keterangan = '$keterangan' WHERE id='$id'";
+
+    //print_r($fields);
+    //die($query);
+    return $this->run_query($query, 'Udah Masuk tapi boong');
+  }
+
+  public function hapusfield( $tabel, $id ){
+    $query = "DELETE FROM $tabel WHERE id='$id'";
+
+    return $this->run_query($query, 'Data blm kehapus nihh...');
   }
 
   /**
