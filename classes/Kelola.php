@@ -9,6 +9,15 @@ class Kelola {
     
   }
 
+  public function getKategori( $table ){
+    $data = $this->_db->get_fields($table);
+
+    //print_r($data);
+    //die();
+    
+    return $data;
+  }
+
   public function inKategori( $fields = array() ) {
     if ( $this->_db->insert('kategori', $fields)){
 
@@ -18,21 +27,29 @@ class Kelola {
     } else {
       return false;
     }
+  }
 
+  public function nampilKategori( $id ){
+    $data = $this->_db->kirimKategori( $id );
+    
+    return $data;
+  }
+
+  public function editKategori( $nama, $keterangan, $id ){
+    if ( $this->_db->updateKategori($nama, $keterangan, $id)){
+      return true;
+    } else {
+      return false;
+    }
 
   }
 
-  public function getKategori( $table ){
-    $data = $this->_db->get_fields($table);
-
-    //print_r($data);
-    //die();
-    
-    return $data;
-    
-    // while($row = $data){
-    //   return $row;
-    // }
+  public function hapus( $tabel, $id ){
+    if ( $this->_db->hapusfield( $tabel, $id ) ){
+      return true;
+    } else {
+      return false;
+    }
   }
 
 
