@@ -9,26 +9,35 @@ require_once 'core/init.php';
   $errors = array();
 
   if ( Input::get('id') ){
-    $kelola->nampilData('kategori', Input::get('id') );
+    $kelola->nampilData('barang', Input::get('id') );
   } 
 
   if ( Input::get('submit') ) {
 
     $validation = new Validation();
     $validation = $validation->check( array(
-      'nmbarang'        => array(
+      'nmbarang'    => array(
                         'required' => true,
                         'min'      => 3,
-                      ),
+                        ),
+      'jmlh'        => array(
+                          'required' => true,
+                          'min'      => 1,
+                          'max'      => 10,
+                        ),
+      'id_kategori'    => array(
+                          'required' => true,
+                        ),
       'keterangan'  => array(
                         'required' => true,
                         'min'      => 5,
-                      ),
+                        ),
     ));
     if( $validation->passed() ) {
-
-      $kelola->editKategori( 
+      $kelola->editBarang( 
         Input::get('nmbarang'),
+        Input::get('jmlh'),
+        Input::get('id_kategori'),
         Input::get('keterangan'),
         Input::get('id')
       );
@@ -57,7 +66,7 @@ include 'template/header.php';
         <div class="container-fluid">
 
           <!-- Page Heading -->
-          <h1 class="h3 mb-4 text-gray-800">Kelola Ketegori</h1>
+          <h1 class="h3 mb-4 text-gray-800">Kelola Barang</h1>
 
           <div class="row">
             <div class="col-lg-4">
@@ -65,18 +74,18 @@ include 'template/header.php';
                 <div class="card-header py-3">
                 <?php 
                     if ( Input::get('id') ){
-                      $hasil = $kelola->nampilData('kategori', Input::get('id') );
+                      $hasil = $kelola->nampilData('barang', Input::get('id') );
                       // echo "<pre>";
                       // print_r($hasil);
                       // echo "</pre>";
-                      //die();
+                      // die();
                       foreach($hasil as $index => $data) {
-                  ?>
-                  <h6 class="m-0 font-weight-bold text-primary"> Edit Kategori <?= $data['nama'] ?></h6>
+                      ?>
+                  <h6 class="m-0 font-weight-bold text-primary"> Input</h6>
                 </div>
                 <div class="card-body">
-                <form method="POST" action="editkategori.php">
-                  <?php if( !empty($errors) ) {?>
+                <form method="POST" action="editbarang.php" >
+                <?php if( !empty($errors) ) {?>
                     <div class="alert alert-danger" role="alert">
                       <?php 
                       foreach ($errors as $error) { ?>
@@ -84,30 +93,43 @@ include 'template/header.php';
                       <?php } ?>
                     </div>
                   <?php } ?>
-                  
-                  
-                  <div class="form-group" >
-                    <label>Nama Kategori</label>
+                  <div class="form-group">
+                    <label>Nama Barang</label>
                     <input type="hidden" name="id" class="form-control" placeholder="id" value="<?= $data['id'] ?>">
-                    <input type="text" name="nmbarang" class="form-control" placeholder="Nama Barang" value="<?= $data['nama'] ?>">
+                    <input type="text" name="nmbarang" class="form-control" placeholder="Nama Barang" value="<?= $data['nmbarang'] ?>">
+                  </div>
+                  <div class="form-group">
+                    <label>Jumlah</label>
+                    <input type="text" name="jmlh" class="form-control" placeholder="Jumlah Barang" value="<?= $data['jmlh'] ?>">
+                  </div>
+                  <div class="form-group">
+                    <label>Kategori</label>
+                    <select class="form-control" name="id_kategori">
+                    <?php 
+                      $fields = $kelola->getKategori('kategori');
+                      foreach($fields as $index => $data) {
+                    ?>
+                    <option value="<?php echo $data['id']; ?>" ><?= $data['nama'] ?></option>
+                    <?php 
+                      }
+                    ?>
+                    </select>
                   </div>
                   <div class="form-group">
                     <label>Keterangan</label>
-                    <textarea class="form-control" name="keterangan" placeholder="Keterangan" rows="3" ><?= $data['keterangan'] ?></textarea>
+                    <textarea class="form-control" name="keterangan" placeholder="Keterangan" rows="3"><?= $data['keterangan'] ?></textarea>
                   </div>
                   <?php 
                       }
                     }
                   ?>
-                  <input type="submit" name="submit" class="btn btn-primary" value="Update">
-                  <a href="kelolakategori.php"><button type="button" class="btn btn-primary">Kembali</button></a>
+                  <input type="submit" name="submit" class="btn btn-primary" value="Submit">
+                  <a href="kelolabarang.php"><button type="button" class="btn btn-primary">Kembali</button></a>
                 </form>
+
                 </div>
               </div>
-            </div>
-                </div>
-              </div>
-              </div>
+
             </div>
           </div>
           
