@@ -29,8 +29,8 @@ class Kelola {
     }
   }
 
-  public function nampilKategori( $id ){
-    $data = $this->_db->kirimKategori( $id );
+  public function nampilData( $tabel, $id ){
+    $data = $this->_db->dataEdit( $tabel, $id );
     
     return $data;
   }
@@ -41,7 +41,25 @@ class Kelola {
     } else {
       return false;
     }
+  }
 
+  public function inBarang( $fields = array() ) {
+    if ( $this->_db->insert('barang', $fields)){
+
+      // print_r($fields);
+      // die();
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  public function editBarang($nama, $jmlh, $id_kategori, $keterangan, $id ){
+    if ( $this->_db->updateBarang($nama, $jmlh, $id_kategori, $keterangan, $id )){
+      return true;
+    } else {
+      return false;
+    }
   }
 
   public function hapus( $tabel, $id ){

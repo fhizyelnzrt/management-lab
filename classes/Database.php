@@ -89,8 +89,8 @@ class Database {
     return $data;
   }
 
-  public function kirimKategori( $id ){
-    $query = "SELECT * FROM kategori WHERE id=$id";
+  public function dataEdit( $tabel, $id ){
+    $query = "SELECT * FROM $tabel WHERE id=$id";
     $result = $this->mysqli->query($query);
 
     while($row = $result->fetch_assoc() ){
@@ -105,6 +105,15 @@ class Database {
     $query = "UPDATE kategori SET nama = '$nama', keterangan = '$keterangan' WHERE id='$id'";
 
     //print_r($fields);
+    //die($query);
+    return $this->run_query($query, 'Udah Masuk tapi boong');
+  }
+
+  public function updateBarang($nama, $jmlh, $id_kategori, $keterangan, $id ){
+
+    $query = "UPDATE barang SET nmbarang = '$nama', jmlh = $jmlh, id_ketegori = $id_kategori, keterangan = '$keterangan' WHERE id='$id'";
+
+    //print_r($query);
     //die($query);
     return $this->run_query($query, 'Udah Masuk tapi boong');
   }
