@@ -15,7 +15,7 @@ class Database {
   function __construct(){
     $this->mysqli = new mysqli( $this->HOST, $this->USER, $this->PASS, $this->DBNAME);
     if (mysqli_connect_error()){
-      die('gagal cuyy');
+      die('gagal cuyy' . mysqli_connect_error() . '</br>');
     }
   }
 
@@ -80,13 +80,28 @@ class Database {
 
   }
 
+  public function get_fields($table){
+ 
+    $query  = "SELECT * FROM $table";
+    $result = $this->mysqli->query($query);
+    //$hasil = $result->fetch_all();
+    while($row = $result->fetch_assoc()  ) {
+       $data[] = $row;
+    }
+    return $data;
+    
+    //return $result;
+  }
+
   /**
    * method untuk menjalankan query saja dan menampilkan pesan kesalahan dalam development
    */
   public function run_query($query, $msg){
     //pengecekan query sukes atau tidak
     if( $this->mysqli->query($query)) return true;
-    else die($msg);
+    //method error itu hanya digunakan untuk develop karna akan memunculkan pesan error
+    //untuk programmer agar mudah dipahami
+    else die($msg . $this->mysqli->error);
   }
 
   /**
