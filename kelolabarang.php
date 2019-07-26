@@ -149,18 +149,18 @@ include 'template/header.php';
                     <tbody>
                     <?php 
                       $no = 1;
-                      $fields = $kelola->getKategori('barang');
+                      $fields = $kelola->getTBarang();
                       // echo "<pre>";
                       // print_r($fields);
                       // echo "</pre>";
-                      //die();
+                      // die();
                       foreach($fields as $index => $data) {
                           ?>
                           <tr role="row" class="odd">
                         <td class="sorting_1"><?= $no++ ?></td>
                         <td><?= $data['nmbarang'] ?></td>
                         <td><?= $data['jmlh'] ?></td>
-                        <td><?= $data['id_ketegori'] ?></td>
+                        <td><?= $data['nama'] ?></td>
                         <td><?= $data['keterangan'] ?></td>
                         <td>
                           <a href="editbarang.php?id=<?php echo $data['id']; ?>" class="btn btn-outline-warning btn-sm"> Edit</a>

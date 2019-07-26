@@ -9,6 +9,15 @@ class Kelola {
     
   }
 
+  public function getTBarang(){
+    $data = $this->_db->get_fieldsBarang();
+
+    //print_r($data);
+    //die();
+    
+    return $data;
+  }
+
   public function getKategori( $table ){
     $data = $this->_db->get_fields($table);
 

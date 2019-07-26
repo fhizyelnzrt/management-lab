@@ -79,6 +79,17 @@ class Database {
 
   }
 
+  public function get_fieldsBarang(){
+    $query = "SELECT barang.id, barang.nmbarang, barang.jmlh, kategori.nama, barang.keterangan FROM barang, kategori WHERE kategori.id=barang.id_ketegori";
+    $result = $this->mysqli->query($query);
+
+    while ( $row = $result->fetch_assoc() ){
+      $data[] = $row;
+    }
+
+    return $data;
+  }
+
   public function get_fields($table){
     $query  = "SELECT * FROM $table";
     $result = $this->mysqli->query($query);
