@@ -39,10 +39,9 @@
                       <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Jumlah Kategori</div>
                       <div class="h5 mb-0 font-weight-bold text-gray-800">
                         <?php 
-                        // $fields = $kelola->getKategori('kategori');
-                        // print_r($fields);
-                        // $jmlh = mysqli_num_rows($fields);
-                        // echo $jmlh;
+                        $fields = $kelola->getKategori('kategori');
+                        $banyak = count($fields);
+                        echo $banyak;
                         ?> 
                       </div>
                     </div>
@@ -61,7 +60,13 @@
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
                       <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Jumlah Barang</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">0</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">
+                      <?php 
+                        $fields = $kelola->getKategori('barang');
+                        $banyak = count($fields);
+                        echo $banyak;
+                        ?> 
+                      </div>
                     </div>
                     <div class="col-auto">
                       <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
@@ -99,7 +104,7 @@
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
                       <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Kepala Laboratorium</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">Gatot Suproyono</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">Gatot Supriyono</div>
                     </div>
                     <div class="col-auto">
                       <i class="fas fa-comments fa-2x text-gray-300"></i>
