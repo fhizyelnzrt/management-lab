@@ -41,7 +41,11 @@
                         <?php 
                         $fields = $kelola->getKategori('kategori');
                         $banyak = count($fields);
-                        echo $banyak;
+                        if ( $banyak == 0 ){
+                          echo "0";
+                        } else {
+                          echo $banyak;
+                        }
                         ?> 
                       </div>
                     </div>
@@ -64,7 +68,11 @@
                       <?php 
                         $fields = $kelola->getKategori('barang');
                         $banyak = count($fields);
-                        echo $banyak;
+                        if ( $banyak == 0 ){
+                          echo "0";
+                        } else {
+                          echo $banyak;
+                        }
                         ?> 
                       </div>
                     </div>

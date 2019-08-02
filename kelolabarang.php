@@ -128,12 +128,12 @@ include 'template/header.php';
                     <table class="table table-bordered dataTable" id="dataTable" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
                     <thead>
                       <tr role="row">
-                        <th class="sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 233px;">No.</th>
-                        <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 377px;">Nama</th>
-                        <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 173px;">Jumlah</th>
-                        <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="width: 83px;">Kategori</th>
+                        <th class="sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 40px;">No.</th>
+                        <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 180px;">Nama</th>
+                        <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 50px;">Jumlah</th>
+                        <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="width: 100px;">Kategori</th>
                         <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Start date: activate to sort column ascending" style="width: 163px;">Keterangan</th>
-                        <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Start date: activate to sort column ascending" style="width: 163px;">Action</th>
+                        <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Start date: activate to sort column ascending" style="width: 80px;">Action</th>
                       </tr>
                     </thead>
                     <tfoot>
@@ -150,24 +150,34 @@ include 'template/header.php';
                     <?php 
                       $no = 1;
                       $fields = $kelola->getTBarang();
+                      //$nol = array();
+                      $banyak = count($fields);
                       // echo "<pre>";
                       // print_r($fields);
                       // echo "</pre>";
                       // die();
-                      foreach($fields as $index => $data) {
-                          ?>
-                          <tr role="row" class="odd">
-                        <td class="sorting_1"><?= $no++ ?></td>
-                        <td><?= $data['nmbarang'] ?></td>
-                        <td><?= $data['jmlh'] ?></td>
-                        <td><?= $data['nama'] ?></td>
-                        <td><?= $data['keterangan'] ?></td>
-                        <td>
-                          <a href="editbarang.php?id=<?php echo $data['id']; ?>" class="btn btn-outline-warning btn-sm"> Edit</a>
-                          <a href="kelolabarang.php?hapus=<?php echo $data['id']; ?>" class="btn btn-outline-danger btn-sm"> Delete</a>
-                        </td>
-                      </tr>
-                      <?php
+                      if ( $banyak != 0 ){
+                        foreach($fields as $index => $data) {
+                            ?>
+                            <tr role="row" class="odd">
+                              <td class="sorting_1"><?= $no++ ?></td>
+                              <td><?= $data['nmbarang'] ?></td>
+                              <td><?= $data['jmlh'] ?></td>
+                              <td><?= $data['nama'] ?></td>
+                              <td><?= $data['keterangan'] ?></td>
+                              <td>
+                                <a href="editbarang.php?id=<?php echo $data['id']; ?>" class="btn btn-outline-warning btn-sm"> Edit</a>
+                                <a href="kelolabarang.php?hapus=<?php echo $data['id']; ?>" class="btn btn-outline-danger btn-sm"> Delete</a>
+                              </td>
+                            </tr>
+                        <?php
+                        }
+                      } else {
+                        ?>
+                        <tr role="row" class="odd">
+                              <td class="sorting_1 text-center p-5" colspan="6"> Hah ? Kosong ?</td>
+                            </tr>
+                      <?php 
                       }
                       ?>
                     </tbody>
