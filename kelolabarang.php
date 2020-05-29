@@ -122,30 +122,20 @@ include 'template/header.php';
               </div>
               <div class="card-body">
                 <div class="table-responsive">
-                  <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
+                  <div class="dataTables_wrapper dt-bootstrap4">
                 <div class="row">
                   <div class="col-sm-12">
-                    <table class="table table-bordered dataTable" id="dataTable" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
+                    <table id="dataTable">
                     <thead>
                       <tr role="row">
-                        <th class="sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 40px;">No.</th>
-                        <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 180px;">Nama</th>
-                        <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 50px;">Jumlah</th>
-                        <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="width: 100px;">Kategori</th>
-                        <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Start date: activate to sort column ascending" style="width: 163px;">Keterangan</th>
-                        <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Start date: activate to sort column ascending" style="width: 80px;">Action</th>
+                        <th  style="width: 40px;">No.</th>
+                        <th  style="width: 180px;">Nama</th>
+                        <th  style="width: 50px;">Jumlah</th>
+                        <th  style="width: 100px;">Kategori</th>
+                        <th  style="width: 163px;">Keterangan</th>
+                        <th  style="width: 80px;">Action</th>
                       </tr>
                     </thead>
-                    <tfoot>
-                      <tr>
-                        <th rowspan="1" colspan="1">No.</th>
-                        <th rowspan="1" colspan="1">Nama</th>
-                        <th rowspan="1" colspan="1">Jumlat</th>
-                        <th rowspan="1" colspan="1">Kategori</th>
-                        <th rowspan="1" colspan="1">Keterangan</th>
-                        <th rowspan="1" colspan="1">Action</th>
-                      </tr>
-                    </tfoot>
                     <tbody>
                     <?php 
                       $no = 1;
@@ -181,7 +171,10 @@ include 'template/header.php';
                       }
                       ?>
                     </tbody>
-                  </table></div></div><div class="row"><div class="col-sm-12 col-md-5"><div class="dataTables_info" id="dataTable_info" role="status" aria-live="polite">Showing 1 to 10 of 57 entries</div></div><div class="col-sm-12 col-md-7"><div class="dataTables_paginate paging_simple_numbers" id="dataTable_paginate"><ul class="pagination"><li class="paginate_button page-item previous disabled" id="dataTable_previous"><a href="#" aria-controls="dataTable" data-dt-idx="0" tabindex="0" class="page-link">Previous</a></li><li class="paginate_button page-item active"><a href="#" aria-controls="dataTable" data-dt-idx="1" tabindex="0" class="page-link">1</a></li><li class="paginate_button page-item "><a href="#" aria-controls="dataTable" data-dt-idx="2" tabindex="0" class="page-link">2</a></li><li class="paginate_button page-item "><a href="#" aria-controls="dataTable" data-dt-idx="3" tabindex="0" class="page-link">3</a></li><li class="paginate_button page-item "><a href="#" aria-controls="dataTable" data-dt-idx="4" tabindex="0" class="page-link">4</a></li><li class="paginate_button page-item "><a href="#" aria-controls="dataTable" data-dt-idx="5" tabindex="0" class="page-link">5</a></li><li class="paginate_button page-item "><a href="#" aria-controls="dataTable" data-dt-idx="6" tabindex="0" class="page-link">6</a></li><li class="paginate_button page-item next" id="dataTable_next"><a href="#" aria-controls="dataTable" data-dt-idx="7" tabindex="0" class="page-link">Next</a></li></ul></div></div></div></div>
+                  </table>
+                  </div>
+                  </div>
+                  </div>
                 </div>
               </div>
               </div>
@@ -214,7 +207,6 @@ include 'template/header.php';
   <a class="scroll-to-top rounded" href="#page-top">
     <i class="fas fa-angle-up"></i>
   </a>
-
 <?php 
 include 'template/footer.php';
 ?>
