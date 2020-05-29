@@ -84,28 +84,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `email`, `password`) VALUES
-(1, 'admin', 'dimas@admin.com', '$2y$10$ZIMiCe7uDlYiOeO/mZzqBukGNJJnQXYSTdyVE0y9uFvGRGEQc6BDm'),
-(2, 'admin', 'mdimasradityatama@gmail.com', '$2y$10$A.T3FfYgMJcIQJPi4EHSwOJtJrzNrv1Phejvw1wIXDDLVg48GN4YW'),
-(3, 'asdas', '', '$2y$10$soB2OA7yg.VrcI1CxR1L.uXlDb82O6lx56pGpXdhaSuUUaaT0Ddde'),
-(4, 'as', '', '$2y$10$W6K4tnWyxn6SEtmK8knIvu1BSq5FYrveXcfh68ubsaf4/fIBNsDKC'),
-(5, 'as', '', '$2y$10$Yrcc.XRSLChsSnK25CPhHu33oX7.sEQCqSIr/Ib2EqYja1Nm.bRui'),
-(6, '', '', '$2y$10$33VsWd3DlrUY.ypLG0RtSOWqO3jhJdjGhEMWGQRwqzAi0jiQK/PkW'),
-(7, '', '', '$2y$10$GpIvIIZRenQbfJ2pC7amveG2gyrMbkb8pXR6H4v3kizSHF32xhtEC'),
-(8, '', '', '$2y$10$Msek/XXQqjtF0M.7rYGRMuR7noDv0js7cTk0iqsyCe35uKMk8w92m'),
-(9, 'asdqewq', '', '$2y$10$xCPHJS3QcHdtlo8z6WnhwuOueBNrwuHDGPeM/A65T9Gc42AYmdpV.'),
-(10, 'asdasd', 'asdas', '$2y$10$P9mXqSf4MEbzt5lBiJVVae7pKSLs3Rfkj5VsAqkG6gL0FC1xNzEBq'),
-(11, '', '', '$2y$10$nTncTYB3SHw/DlG12oi56.2c3oe9gi8OhrAvhNjTXutC/JVCO.jeK'),
-(12, 'as', '', '$2y$10$J6c.6r5gzw2PdMBXfXNpBuLbUT3UkfI8/UoGVtTS4erRG0pOVQrSK'),
-(13, '', '', '$2y$10$pE9T7Zp6zGBGWje4c.4aX.PLeMxHvTxlZZAhcZROQXp/b5DDCJgtS'),
-(14, '', '', '$2y$10$HieMC6ddHKqWEnbZAxUo6uRgz4oby/ZGIXunGq/lfzM1yPTd3eSAq'),
-(15, '', 'dimas@admin.com', '$2y$10$dCZVi31A7FEk//Iq.RBKBuQEdfB/gDgbgJQJxciPwckhQTygEOi8y'),
-(16, '', 'dimas@admin.com', '$2y$10$EkCdlNnf5YiEGRVgjbby4OF5HFwReDw4..F99UU1vKxxlvVWoS4vS'),
-(17, 'asd', '', '$2y$10$.SPTIbs37M..S3JLZB5GWeiL1733puWeUsKZZ6TvQUVYO9O03S/bq'),
-(18, '', '', '$2y$10$UmbIhDVCwBRtsonxnUQWJuMU5h72XqblI9IZUwMkzop5AwY.So9aK'),
-(19, 'test1', 'test@email.com', '$2y$10$VagIfYKlf47ETWeDjnj57OOLD.ntirHb5Iqg9YKJfJZPS/cEBmMNi'),
-(20, 'test1', 'test@email.com', '$2y$10$rMfLIdFTwVYWnEOADVOEXu4x0AYDcQZf7cMBw1HtYFkDnOY8Pf1RC'),
-(21, 'dimasrt', 'dimas@admin.com', '$2y$10$eN4Kj9bMCDJI.Q.QUeZssOJAzZvBy87mra1gswKOgLqkrIt7AxZrW'),
-(22, 'mdradityatama1', 'dimas@admin.com', '$2y$10$oXKf.5JFwkR.xPHkdM5JC.R.fdOoFFxagSKp6aZbYvavSi7VDiQkK');
+(22, 'mdradityatama', 'dimas@admin.com', 'password0!');
 
 --
 -- Indexes for dumped tables
